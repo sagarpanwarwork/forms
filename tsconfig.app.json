@@ -4,6 +4,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
+	"moduleResolution": "bundler",
     "types": []
   },
   "include": [
