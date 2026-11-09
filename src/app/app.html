@@ -1,1 +1,122 @@
-<h1>Angular Forms</h1>
+<div class="app-shell">
+	<header class="site-header">
+		<div class="brand-row">
+			<div class="brand-mark">SF</div>
+			<div>
+				<p class="eyebrow">Angular learning playground</p>
+				<h1>Signal Forms</h1>
+			</div>
+			<span class="version-tag">Angular 22+</span>
+		</div>
+		<p class="header-copy">
+			A practical reference for model-driven forms, validation, custom controls,
+			asynchronous checks and JSON-configured forms.
+		</p>
+	</header>
+
+	<nav class="demo-nav" aria-label="Signal Forms examples">
+		@for (demo of demos; track demo.id) {
+		<button type="button" class="nav-button" [class.active]="activeDemo() === demo.id"
+			[attr.aria-current]="activeDemo() === demo.id ? 'page' : null" (click)="selectDemo(demo.id)">
+			{{ demo.label }}
+		</button>
+		}
+	</nav>
+
+	<main class="page-content">
+		@if (activeDemo() === 'overview') {
+		<section class="intro-panel">
+			<p class="eyebrow">Start here</p>
+			<h2>Forms built around a writable signal model</h2>
+			<p>
+				Signal Forms use a writable signal as the source of truth. Angular
+				creates a field tree from that model, and the <code>[formField]</code>
+				directive connects fields to native inputs or custom controls.
+			</p>
+			<div class="concept-grid">
+				<article class="concept-card">
+					<span class="concept-number">01</span>
+					<h3>Model</h3>
+					<p><code>signal()</code> stores the current form data.</p>
+				</article>
+				<article class="concept-card">
+					<span class="concept-number">02</span>
+					<h3>Field tree</h3>
+					<p><code>form()</code> creates typed field access from the model.</p>
+				</article>
+				<article class="concept-card">
+					<span class="concept-number">03</span>
+					<h3>Schema</h3>
+					<p>Validation and conditional rules describe field behaviour.</p>
+				</article>
+				<article class="concept-card">
+					<span class="concept-number">04</span>
+					<h3>Binding</h3>
+					<p><code>FormField</code> keeps the UI and model synchronized.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="section-block">
+			<div class="section-heading">
+				<div>
+					<p class="eyebrow">Learning path</p>
+					<h2>Explore the examples</h2>
+				</div>
+			</div>
+			<div class="learning-list">
+				<button class="learning-item" type="button" (click)="selectDemo('registration')">
+					<span><strong>1. Static registration form</strong><small>Required fields, email, password matching,
+							conditional fields and FormRoot.</small></span>
+					<span class="item-arrow">→</span>
+				</button>
+				<button class="learning-item" type="button" (click)="selectDemo('async')">
+					<span><strong>2. Asynchronous validation</strong><small>Validate a username against a public API
+							with a debounced HTTP check.</small></span>
+					<span class="item-arrow">→</span>
+				</button>
+				<button class="learning-item" type="button" (click)="selectDemo('custom')">
+					<span><strong>3. Custom controls</strong><small>Implement FormValueControl and FormCheckboxControl,
+							including a file picker.</small></span>
+					<span class="item-arrow">→</span>
+				</button>
+				<button class="learning-item" type="button" (click)="selectDemo('dynamic')">
+					<span><strong>4. JSON-driven dynamic form</strong><small>Load field definitions from an asset, fetch
+							select options, and submit to DummyJSON.</small></span>
+					<span class="item-arrow">→</span>
+				</button>
+			</div>
+		</section>
+
+		<aside class="notice notice-info">
+			<strong>Version note</strong>
+			<p>
+				Signal Forms became stable in Angular 22. This playground targets
+				Angular 22.2.x. The previous repository baseline was Angular 20.3.x,
+				so upgrade the workspace before using these stable APIs.
+			</p>
+		</aside>
+		}
+
+		@if (activeDemo() === 'registration') {
+		<app-registration-demo />
+		}
+
+		@if (activeDemo() === 'async') {
+		<app-async-validation-demo />
+		}
+
+		@if (activeDemo() === 'custom') {
+		<app-custom-controls-demo />
+		}
+
+		@if (activeDemo() === 'dynamic') {
+		<app-dynamic-form-demo />
+		}
+	</main>
+
+	<footer class="site-footer">
+		<span>Angular Signal Forms playground</span>
+		<span>Examples are educational; validate all business rules on your backend.</span>
+	</footer>
+</div>

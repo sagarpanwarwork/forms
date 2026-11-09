@@ -1,1 +1,57 @@
-<p>signal-form works!</p>
+<form>
+
+	<div>
+		<label>Full Name</label>
+
+		<input type="text" [formField]="registrationForm.fullName" />
+
+		@if (
+		registrationForm.fullName().touched() &&
+		registrationForm.fullName().invalid()
+		) {
+		@for (
+		error of registrationForm.fullName().errors();
+		track $index
+		) {
+		<small>{{ error.message }}</small>
+		}
+		}
+	</div>
+
+	<div>
+		<label>Email</label>
+
+		<input type="email" [formField]="registrationForm.email" />
+
+		@if (
+		registrationForm.email().touched() &&
+		registrationForm.email().invalid()
+		) {
+		@for (
+		error of registrationForm.email().errors();
+		track $index
+		) {
+		<small>{{ error.message }}</small>
+		}
+		}
+	</div>
+
+	<div>
+		<label>Password</label>
+
+		<input type="password" [formField]="registrationForm.password" />
+
+		@if (
+		registrationForm.password().touched() &&
+		registrationForm.password().invalid()
+		) {
+		@for (
+		error of registrationForm.password().errors();
+		track $index
+		) {
+		<small>{{ error.message }}</small>
+		}
+		}
+	</div>
+
+</form>
